@@ -17,3 +17,5 @@
 vendor/*
 dist/
 fritzbox_smarthome_exporter
+/.idea/
+/.env

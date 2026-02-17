@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
@@ -52,7 +51,7 @@ var (
 	fbURL           *url.URL
 	username        = flag.String("username", "", "FRITZ!Box username.")
 	password        = flag.String("password", "", "FRITZ!Box password.")
-	urlString       = flag.String("url", "https://fritz.box", "FRITZ!Box URL.")
+	urlString       = flag.String("url", "https://fritz.box/login_sid.lua?version=2", "FRITZ!Box URL.")
 	noVerify        = flag.Bool("noverify", false, "Omit TLS verification of the FRITZ!Box certificate.")
 	certificatePath = flag.String("cert", "", "Path to the FRITZ!Box certificate.")
 	loglevel        = flag.String("loglevel", "warn", "Logging verbosity (debug, info, warn, error or none)")
@@ -119,7 +118,7 @@ func main() {
 	}
 
 	if !*noVerify && len(*certificatePath) > 0 {
-		crt, err := ioutil.ReadFile(*certificatePath)
+		crt, err := os.ReadFile(*certificatePath)
 		if err != nil {
 			log.Fatalln("Unable to read certificate file:", err)
 		}
