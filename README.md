@@ -14,7 +14,7 @@ Usage of ./fritzbox_smarthome_exporter:
   -loglevel="warn": Logging verbosity (debug, info, warn or error)
   -noverify=false: Omit TLS verification of the FRITZ!Box certificate.
   -password="": FRITZ!Box password.
-  -url="https://fritz.box": FRITZ!Box URL.
+  -url="https://fritz.box/login_sid.lua?version=2": FRITZ!Box URL.
   -username="": FRITZ!Box username.
 ```
 Command line arguments or environment variables (the argument as uppercase, like `CERT` for `-cert`) may be used.
@@ -108,7 +108,7 @@ docker run -d --name fritzbox_smarthome_exporter -p 9103:9103 \
   -v $(pwd)/boxcert.cer:/fritzbox.pem:ro \
   -e PASSWORD=SuperSecret \
   -e USERNAME=SmarthomeUser \
-  jaymedh/fritzbox_smarthome_exporter -url="https://fritz.box:8443" -cert=/fritzbox.pem
+  jaymedh/fritzbox_smarthome_exporter -url="https://fritz.box:8443/login_sid.lua?version=2" -cert=/fritzbox.pem
 ```
 
 
